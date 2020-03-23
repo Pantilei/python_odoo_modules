@@ -1,0 +1,87 @@
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="cirus_configuration_view_tree">
+      <field name="name">cirus_inventory list</field>
+      <field name="model">cirus.configuration</field>
+      <field name="arch" type="xml">
+        <tree delete="0">
+          <field name="url"/>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="cirus_configuration_view_form" model="ir.ui.view">
+        <field name="name">cirus_configuration_view_form</field>
+        <field name="model">cirus.configuration</field>
+        <field name="arch" type="xml">
+            <form string="cirus_configuration_form" delete="0">
+                <sheet>
+                    <group colspan="2">
+                        <h2>API</h2>
+                        <field name="url"/>
+                    </group>
+                    <group colspan="4">
+                        <h3>Product fields send to Control Center</h3>
+                        <field name="name"/>
+                        <br/>
+                        <field name="description"/>
+                        <field name="description_purchase"/>
+                        <field name="description_sale"/>
+                        <field name="type"/>
+                        <field name="rental"/>
+                        <field name="categ_id"/>
+                        <field name="list_price"/>
+                        <field name="standard_price"/>
+                        <field name="volume"/>
+                        <field name="weight"/>
+                        <field name="sale_ok"/>
+                        <field name="purchase_ok"/>
+                        <field name="uom_id"/>
+                        <field name="uom_po_id"/>
+                        <field name="company_id"/>
+                        <field name="active"/>
+                        <field name="color"/>
+                        <field name="default_code"/>
+                        <field name="uid_create"/>
+                        <field name="date_create"/>
+                        <field name="uid_write"/>
+                        <field name="date_write"/>
+                        <field name="responsible_id"/>
+                        <field name="sale_delay"/>
+                        <field name="tracking"/>
+                        <field name="description_picking"/>
+                        <field name="description_pickingout"/>
+                        <field name="description_pickingin"/>
+                        <field name="service_type"/>
+                        <field name="sale_line_warn"/>
+                        <field name="sale_line_warn_msg"/>
+                        <field name="expense_policy"/>
+                        <field name="invoice_policy"/>
+                        <field name="purchase_method"/>
+                        <field name="purchase_line_warn"/>
+                        <field name="purchase_line_warn_msg"/>
+                        <field name="service_to_purchase"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+
+    <record id="cirus_configuration_action_server" model="ir.actions.server">
+      <field name="name">Configuration</field>
+      <field name="model_id" ref="cirus_inventory.model_cirus_configuration" />
+      <field name="state">code</field>
+      <field name="code">action = model.configure()</field>
+    </record>
+
+
+    <menuitem name="Control Center Config" id="cirus_configuration" parent="stock.menu_stock_inventory_control"
+              action="cirus_configuration_action_server"/>
+
+  </data>
+</odoo>
